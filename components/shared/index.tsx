@@ -1,4 +1,4 @@
 import Header from "./Header";
-import Hero from "./Hero";
+import HomeComponent from "./HomeComponent";
 
-export { Header, Hero }
+export { Header, HomeComponent }

@@ -82,6 +82,12 @@
   .animate-delay-4second{
     animation-delay: 4s;
   }
+  .letter-gap-5{
+    letter-spacing: 5px;
+  }
+  .text-gradient{
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#ffb88e] to-[#ea5753]
+  }
 }
 
 /*  animate-blob

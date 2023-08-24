@@ -1,10 +1,10 @@
-import { Hero } from '@/components/shared'
+import { HomeComponent } from '@/components/shared'
 import React from 'react'
 
 const Home = () => {
   return (
-    <div className='container mx-auto'>
-      <Hero />
+    <div className=''>
+      <HomeComponent />
     </div>
   )
 }
