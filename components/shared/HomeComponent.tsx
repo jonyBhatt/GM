@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
@@ -6,14 +6,15 @@ import { AiOutlineBug, AiOutlineFileSearch } from "react-icons/ai";
 import { FaChalkboardTeacher, FaUserGraduate, FaPython } from "react-icons/fa";
 import { GiDiamondHard } from "react-icons/gi";
 import { GoRocket } from "react-icons/go";
-import { BsArrowRight } from 'react-icons/bs'
-import { BiLogoJavascript, BiLogoPostgresql } from "react-icons/bi";
+import { BsArrowRight } from "react-icons/bs";
 import Link from "next/link";
 import { developerData } from "@/constant";
+import { useUser } from "@clerk/nextjs";
 
 const HomeComponent = () => {
+	const {isLoaded} = useUser()
 	return (
-		<div className="">
+		<div>
 			{/* Feature Section */}
 			<div className="container mx-auto">
 				{/* Animated Screen and Title */}
@@ -115,7 +116,7 @@ const HomeComponent = () => {
 						</div>
 					</div>
 					{/* Mobile Screen */}
-					<div className="mt-4 flex items-center justify-between px-20">
+					<div className="mt-4 md:flex items-center sm:hidden xs:hidden justify-between px-20">
 						{/* Image Div */}
 						<div className="flex justify-center items-center my-4">
 							<Image
@@ -156,7 +157,7 @@ const HomeComponent = () => {
 							</Button>
 						</div>
 					</div>
-					<div className="mt-4 flex items-center justify-center gap-60">
+					<div className="mt-4 md:flex sm:hidden xs:hidden items-center justify-center gap-60">
 						<div className="mt-4 flex items-start flex-col">
 							<h4 className="text-lg mb-2">
 								Project-based freelance <br /> work
@@ -233,7 +234,7 @@ const HomeComponent = () => {
 					</div>
 				</div>
 				{/* Mobile Screen */}
-				<div className="flex gap-6 items-center justify-around">
+				<div className="flex gap-6 items-center justify-around xs:hidden">
 					<div className="flex flex-col items-start">
 						<div className="my-4">
 							<h3 className="font-bold text-2xl ">getmentor</h3>
@@ -279,7 +280,7 @@ const HomeComponent = () => {
 							Hiring for a bigger <br /> project
 						</h3>
 					</div>
-					<span className="text-lg font-normal mb-4">
+					<span className="text-lg font-normal mb-4 xs:text-sm">
 						Coachfy helps you find senior developers for both <br /> permanent
 						full-time roles and 40+ hour contract <br /> projects.
 					</span>
@@ -294,7 +295,7 @@ const HomeComponent = () => {
 					</div>
 				</div>
 				{/* Mobile Screen */}
-				<div className="flex items-center gap-4 justify-evenly text-center ">
+				<div className="md:flex items-center gap-4 justify-evenly text-center xs:hidden">
 					<div className="flex flex-col gap-3">
 						<div className="mb-6">
 							<h5 className="text-lg">coachfy()</h5>
@@ -357,7 +358,7 @@ const HomeComponent = () => {
 					</div>
 				</div>
 				{/* Mobile Screen */}
-				<div className="mt-4 container mx-auto bg-gradient-to-r from-fuchsia-700 via-gray-900 to-black py-10 ">
+				<div className="mt-4 container mx-auto bg-gradient-to-r from-fuchsia-700 via-gray-900 to-black xs:hidden py-10 ">
 					<h2 className="text-3xl font-bold text-center">
 						Connect with <br /> 12000+ top{" "}
 						<span className="text-gradient">developers</span> anytime
@@ -392,9 +393,60 @@ const HomeComponent = () => {
 			</div>
 			{/* Find Get Mentor */}
 			<div className="container mx-auto my-8">
-				<h1 className="font-bold text-4xl text-center">What you'll find on Getmentor</h1>
-				<div className="flex justify-center gap-4 items-center sm:flex-wrap lg:flex-nowrap">
-					<div className="flex flex-col gap-4 p-4 rounded-sm shadow shadow-slate-400"></div>
+				<h1 className="font-bold md:text-4xl xs:text-3xl text-center">
+					What you'll find on Getmentor
+				</h1>
+				<div className="flex justify-center gap-8 my-7 items-center flex-wrap">
+					<div className="flex flex-col items-center max-w-sm lg:h-80 gap-4 p-4 rounded-sm shadow shadow-slate-400">
+						<Image
+							src="/assets/analytics.svg"
+							alt="svg"
+							width={200}
+							height={200}
+							className="object-cover my-4"
+						/>
+						<h3 className="md:text-2xl xs:text-lg text-center font-bold">
+							A variety of technologies
+						</h3>
+						<span className="sm:text-sm text-center font-light xs:text-xs">
+							From JavaScript and React to Swift and <br /> Go, our developers
+							cover it all.
+						</span>
+					</div>
+
+					<div className="flex flex-col items-center max-w-sm gap-4 p-4 lg:h-80  rounded-sm shadow shadow-slate-400">
+						<Image
+							src="/assets/review.svg"
+							alt="svg"
+							width={200}
+							height={200}
+							className="object-cover my-4"
+						/>
+						<h3 className="md:text-2xl xs:text-lg text-center font-bold">
+							Code help from experts
+						</h3>
+						<span className="sm:text-sm text-center font-light xs:text-xs">
+							Our developers go through a strict <br /> application and vetting
+							process, leaving <br /> only the best.
+						</span>
+					</div>
+
+					<div className="flex flex-col items-center max-w-sm gap-4  lg:h-80  p-4 rounded-sm shadow shadow-slate-400">
+						<Image
+							src="/assets/coder.svg"
+							alt="svg"
+							width={200}
+							height={200}
+							className="object-cover my-4"
+						/>
+						<h3 className="md:text-2xl xs:text-lg text-center font-bold">
+							Effortless setup
+						</h3>
+						<span className="sm:text-sm text-center font-light xs:text-xs">
+							Take advantage of our easy set up and <br /> billing process to
+							connect with a <br /> developer right away.
+						</span>
+					</div>
 				</div>
 			</div>
 		</div>

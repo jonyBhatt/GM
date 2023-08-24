@@ -1,12 +1,14 @@
-import { HomeComponent } from '@/components/shared'
+import { Header, HomeComponent } from '@/components/shared'
 import React from 'react'
-
-const Home = () => {
+import {  currentUser } from "@clerk/nextjs";
+const Home = async () => {
+  	const user = await currentUser();
   return (
-    <div className=''>
-      <HomeComponent />
-    </div>
-  )
+		<div>
+			<Header />
+			<HomeComponent />
+		</div>
+	);
 }
 
 export default Home

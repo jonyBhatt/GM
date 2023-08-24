@@ -5,9 +5,15 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { Input } from "../ui/input";
+import { UserButton, SignedIn, SignOutButton, useUser } from "@clerk/nextjs";
 const Header = () => {
 	const [toggle, setToggle] = useState(false);
 	const loggedUser = false;
+	const { isSignedIn, isLoaded, user } = useUser();
+	// console.log(isLoaded, isSignedIn);
+	// if (!isLoaded || !isSignedIn) {
+	// 	return null;
+	// }
 	return (
 		<nav className="py-4 border-b border-red-400">
 			<div className="container items-center justify-between flex mx-auto">
@@ -123,20 +129,31 @@ const Header = () => {
 						<Link className="text-center" href="/blog">
 							Blog
 						</Link>
-						{loggedUser ? (
+
+						{!isLoaded ? (
 							<>
-								<p>Logged User</p>
+								<p>Loading.....</p>
 							</>
 						) : (
 							<>
-								<Link className="text-center" href="/signup">
-									<Button variant={"default"}>Sign Up</Button>
-								</Link>
-								<Link className="text-center" href="/signin">
-									<Button variant={"destructive"}>Login</Button>
-								</Link>
+								{isSignedIn ? (
+									<>
+										<UserButton afterSignOutUrl="/" />
+									</>
+								) : (
+									<>
+										<Link className="text-center" href="/sign-up">
+											<Button variant={"default"}>Sign Up</Button>
+										</Link>
+										<Link className="text-center" href="/sign-in">
+											<Button variant={"destructive"}>Login</Button>
+										</Link>
+									</>
+								)}
 							</>
 						)}
+
+						{/* <UserButton afterSignOutUrl="/" /> */}
 					</div>
 				</div>
 				{/* Desktop Menu Complete */}
